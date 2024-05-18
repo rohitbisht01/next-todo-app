@@ -20,9 +20,12 @@ export default function useTodoList() {
   const todoQuery = useQuery({
     queryKey: ["todo-list"],
     queryFn: async () => {
-      const response = await axios.get(`${BASE_API_URL}api/todo/`, {
-        headers: corsHeaders,
-      });
+      const response = await axios.get(
+        `${BASE_API_URL}api/todo/`
+        // {
+        // headers: corsHeaders,
+        // }
+      );
 
       setTodos(response.data.data);
       return response;

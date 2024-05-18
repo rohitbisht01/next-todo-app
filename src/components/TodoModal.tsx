@@ -35,8 +35,8 @@ export default function TodoModal({ open, setOpen, todo }: TodoModalProps) {
           title,
           description,
           completed: isCompleted,
-        },
-        { headers: corsHeaders }
+        }
+        // { headers: corsHeaders }
       );
 
       return response;
