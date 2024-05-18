@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { BASE_API_URL } from "@/lib/constants";
+import { BASE_API_URL, corsHeaders } from "@/lib/constants";
 
 interface Todo {
   _id: string;
@@ -20,7 +20,9 @@ export default function useTodoList() {
   const todoQuery = useQuery({
     queryKey: ["todo-list"],
     queryFn: async () => {
-      const response = await axios.get(`${BASE_API_URL}api/todo/`);
+      const response = await axios.get(`${BASE_API_URL}api/todo/`, {
+        headers: corsHeaders,
+      });
 
       setTodos(response.data.data);
       return response;
