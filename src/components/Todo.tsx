@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import { BASE_API_URL } from "@/lib/constants";
 
 type NewTodoProps = {
   title: string;
@@ -17,15 +18,11 @@ export default function Todo() {
 
   const taskMutation = useMutation({
     mutationFn: async (newTodo: NewTodoProps) => {
-      const response = await axios.post(
-        `${process.env.NEXT_BASE_URL}/api/todo/`,
-        newTodo,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post(`${BASE_API_URL}/api/todo/`, newTodo, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       return response;
     },

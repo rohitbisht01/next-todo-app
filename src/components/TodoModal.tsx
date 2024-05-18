@@ -4,6 +4,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import { BASE_API_URL } from "@/lib/constants";
 
 interface TodoModalProps {
   open: boolean;
@@ -28,11 +29,11 @@ export default function TodoModal({ open, setOpen, todo }: TodoModalProps) {
 
   const taskMutatation = useMutation({
     mutationFn: async (todoId: string) => {
-      const response = await axios.patch(
-        // `http://localhost:3000/api/todo/${todoId}`,
-        `${process.env.NEXT_BASE_URL}/api/todo/${todoId}`,
-        { title, description, completed: isCompleted }
-      );
+      const response = await axios.patch(`${BASE_API_URL}/api/todo/${todoId}`, {
+        title,
+        description,
+        completed: isCompleted,
+      });
 
       return response;
     },
