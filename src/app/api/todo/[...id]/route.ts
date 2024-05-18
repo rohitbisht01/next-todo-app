@@ -2,7 +2,10 @@ import Todo from "@/database/todo.model";
 import { connectdb } from "@/lib/connectdb";
 import { NextResponse } from "next/server";
 
-export async function GET({ params }: { params: { id: string } }) {
+export async function GET(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
   try {
     await connectdb();
     const id = params.id;
