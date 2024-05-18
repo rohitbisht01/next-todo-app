@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import { Schema, models, model, Document } from "mongoose";
 
 export interface ITodo extends Document {
   title: string;
@@ -8,7 +8,7 @@ export interface ITodo extends Document {
   updated_at: Date;
 }
 
-const TodoSchema = new mongoose.Schema({
+const TodoSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -31,6 +31,6 @@ const TodoSchema = new mongoose.Schema({
   },
 });
 
-const Todo = mongoose.model("Todo", TodoSchema);
+const Todo = models.Todo || model("Todo", TodoSchema);
 
 export default Todo;

@@ -12,9 +12,7 @@ export const connectdb = async () => {
   }
 
   try {
-    const connection = await mongoose.connect(process.env.MONGO_URL, {
-      dbName: "todoDb",
-    });
+    const connection = await mongoose.connect(process.env.MONGO_URL);
     isConnected = true;
     console.log("Database connected with host: ", connection.connection.host);
   } catch (error) {
