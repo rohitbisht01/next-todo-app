@@ -31,7 +31,7 @@ export default function TodoList() {
 
         return (
           <TodoItem
-            key={todo._id}
+            key={todo}
             todo={todo}
             deleteTodoMutation={deleteTodoMutation}
           />
