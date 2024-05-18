@@ -29,7 +29,7 @@ export default function TodoModal({ open, setOpen, todo }: TodoModalProps) {
 
   const taskMutatation = useMutation({
     mutationFn: async (todoId: string) => {
-      const response = await axios.patch(`${BASE_API_URL}/api/todo/${todoId}`, {
+      const response = await axios.patch(`${BASE_API_URL}api/todo/${todoId}`, {
         title,
         description,
         completed: isCompleted,
