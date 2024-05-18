@@ -7,9 +7,14 @@ export async function GET() {
     await connectdb();
 
     const todos = await Todo.find({});
+    const sortedTodos = todos.sort(
+      (a, b) => Date.parse(b.updated_at) - Date.parse(a.updated_at)
+    );
+
+    // console.log(sortedTodos);
 
     return NextResponse.json({
-      data: todos,
+      data: sortedTodos,
     });
   } catch (error) {
     console.log(error);

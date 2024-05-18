@@ -24,12 +24,13 @@ export default function TodoModal({ open, setOpen, todo }: TodoModalProps) {
 
   const [title, setTitle] = useState<string>(todo.title);
   const [description, setDescription] = useState<string>(todo.description);
+  const [isCompleted, setIsCompleted] = useState<boolean>(todo.completed);
 
   const taskMutatation = useMutation({
     mutationFn: async (todoId: string) => {
       const response = await axios.patch(
         `http://localhost:3000/api/todo/${todoId}`,
-        { title, description }
+        { title, description, completed: isCompleted }
       );
 
       return response;
@@ -86,9 +87,6 @@ export default function TodoModal({ open, setOpen, todo }: TodoModalProps) {
                         Update Your Task
                       </Dialog.Title>
                       <div className="mt-5">
-                        {/* <p className="text-sm text-gray-500">
-                          title - {todo.title}
-                        </p> */}
                         <div className="flex flex-col">
                           <div className="font-bold">Title</div>
 
@@ -113,6 +111,18 @@ export default function TodoModal({ open, setOpen, todo }: TodoModalProps) {
                               setDescription(e.target.value);
                             }}
                           />
+                        </div>
+
+                        <div className="flex gap-2">
+                          <input
+                            type="checkbox"
+                            className="cursor-pointer"
+                            checked={isCompleted}
+                            onChange={() =>
+                              setIsCompleted((prev: boolean) => !prev)
+                            }
+                          />
+                          Mark as completed
                         </div>
                       </div>
                     </div>
