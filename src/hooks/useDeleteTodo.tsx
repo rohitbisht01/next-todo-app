@@ -9,7 +9,7 @@ export default function useDeleteTodo() {
   const deleteTodoMutation = useMutation({
     mutationFn: async (todoId) => {
       const response = await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/todo/${todoId}`
+        `${process.env.NEXT_BASE_URL}/api/todo/${todoId}`
         // `http://localhost:3000/api/todo/${todoId}`
       );
 

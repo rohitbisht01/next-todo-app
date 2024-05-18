@@ -30,7 +30,7 @@ export default function TodoModal({ open, setOpen, todo }: TodoModalProps) {
     mutationFn: async (todoId: string) => {
       const response = await axios.patch(
         // `http://localhost:3000/api/todo/${todoId}`,
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/todo/${todoId}`,
+        `${process.env.NEXT_BASE_URL}/api/todo/${todoId}`,
         { title, description, completed: isCompleted }
       );
 

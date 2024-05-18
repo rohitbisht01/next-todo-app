@@ -26,12 +26,12 @@ export default function TodoList() {
 
   return (
     <div className="mt-5">
-      {todos.map((todo) => {
-        console.log(todo);
+      {todos.map((todo: Todo) => {
+        // console.log(todo);
 
         return (
           <TodoItem
-            key={todo}
+            key={todo._id}
             todo={todo}
             deleteTodoMutation={deleteTodoMutation}
           />
