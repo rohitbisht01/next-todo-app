@@ -18,7 +18,7 @@ export default function Todo() {
   const taskMutation = useMutation({
     mutationFn: async (newTodo: NewTodoProps) => {
       const response = await axios.post(
-        "http://localhost:3000/api/todo/",
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/todo/`,
         newTodo,
         {
           headers: {

@@ -19,7 +19,9 @@ export default function useTodoList() {
   const todoQuery = useQuery({
     queryKey: ["todo-list"],
     queryFn: async () => {
-      const response = await axios.get("http://localhost:3000/api/todo/");
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/todo/`
+      );
 
       setTodos(response.data.data);
       return response;
